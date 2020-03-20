@@ -41,32 +41,51 @@ router.post('/signup', (req,res,next)=>{
 
 router.get("/login", (req, res, next)=>{
     // renderizar las vistas de login
-    res.render("log-in.hbs")
+    res.render("auth/login")
 })
 router.post("/login", (req, res, next)=>{
-    const { username, password } = req.body;
-    if(username === "" || password === ""){
-        res.render("log-in", {errorMessage: "Please, fill all the fields"})
+    const { email, password } = req.body;
+    if(email === "" || password === ""){
+        res.render("auth/login", {errormessage: "Please, fill all the fields"})
     }
-    User.findOne({ username })
+    User.findOne({ email })
         .then(user => {
             if (!user) {
-                res.render("log-in", {
-                    errorMessage: "There is no user with that username"
+                res.render("auth/login", {
+                    errormessage: "There is no user with that username"
                 })
             }
             //bcrypt.compareSync(contraseñaNormal, contraseñaHassheda)
             if (bcrypt.compareSync(password, user.password)) {
                 req.session.currentUser = user;
-                res.redirect("/priv/")
+                res.redirect("/")
             }
             else {
-                res.render("log-in", {
-                    errorMessage: "Incorrect password"
+                res.render("auth/login", {
+                    errormessage: "Incorrect password"
                 })
             }
         })
         .catch(err => console.log("error finding the user: " + err))
+});
+
+router.get('/logout', (req, res, next) => {
+    delete req.session.currentUser
+    res.redirect('/')
 })
+
+// router.get('/logout', (req, res, next) => {
+//     if (!req.session.currentUser) {
+//       res.redirect('/');
+//       return;
+//     }
+//     req.session.destroy((err) => {
+//       if (err) {
+//         next(err);
+//         return;
+//       }
+//       res.redirect('/');
+//     });
+//   });
 
 module.exports = router;

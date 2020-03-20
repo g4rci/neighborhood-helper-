@@ -6,16 +6,31 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0px;
 }
+.logo img{
+  height: 50px;
+  position: absolute;
+  background-color: #263139;
+}
 .navBar{
-  background-color: teal;
+  background-color: #263139;
   height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.navBar a{
+  text-decoration: none;
+  padding: 0 10px;
+  color: white;
+  font-size: 20px;
 }
 .indexImg{
   position: relative;
 }
 .indexImg h3{
   position: absolute;
-	top: 50%;
+	top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-decoration: none;
@@ -23,7 +38,7 @@ body {
 }
 .indexImg h1{
   position: absolute;
-	top: 40%;
+	top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-decoration: none;
