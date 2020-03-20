@@ -1,4 +1,8 @@
+<div class="signup">
+<img src="https://cdn.pixabay.com/photo/2018/03/14/23/00/barcelona-3226639_1280.jpg" alt="">
+
 <form action="/auth/signup" method="POST">
+
     <label for="">Name</label>
     <input type="text" name="name">
     <label for="">Email</label>
@@ -9,9 +13,11 @@
     <input type="password" name="repeatpassword">
     <label for="">Direction</label>
     <input type="text" name="direction">
+
     
-    <div>
+    <button type="submit" value="Submit">Submit !</button>
+    <div class="error">
         <p>{{errormessage}}</p>
     </div>
-    <button type="submit" value="Submit">Submit !</button>
 </form>
+</div>

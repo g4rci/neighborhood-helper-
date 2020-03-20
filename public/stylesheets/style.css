@@ -1,17 +1,20 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
+
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0px;
 }
-.logo img{
+
+.logo img {
   height: 50px;
   position: absolute;
   background-color: #263139;
 }
-.navBar{
+
+.navBar {
   background-color: #263139;
   height: 60px;
   display: flex;
@@ -19,43 +22,86 @@ body {
   justify-content: flex-end;
   align-items: center;
 }
-.navBar a{
+
+.navBar a {
   text-decoration: none;
   padding: 0 10px;
   color: white;
   font-size: 20px;
 }
-.indexImg{
+
+.indexImg {
   position: relative;
 }
-.indexImg h3{
+
+.indexImg h3 {
   position: absolute;
-	top: 60%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-decoration: none;
   color: white;
+  font-size: 2.2rem;
 }
-.indexImg h1{
+
+.indexImg h1 {
   position: absolute;
-	top: 50%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-decoration: none;
   color: white;
+  font-size: 2.5rem;
 }
-.indexImg img{
+
+.indexImg img {
   width: 100%;
 }
-.landingCard{
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
 
+.landingCard {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
-.card{
-  border: 3px solid aqua;
+
+.card {
+  border: 5px solid #263139;
   width: 400px;
   height: 500px;
+  margin-top: 20px;
+  padding: 10px;
 }
 
+.signup img{ 
+  position: relative;
+  width: 100%;
+}
+.signup form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 20rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 50%;
+}
+.signup label, input{
+  font-size: 25px;
+  margin: 5px 0;
+  color: white;
+}
+.signup button{
+  height: 30px;
+  width: 200px;
+  color: white;
+  background-color: aqua;
+  margin: 20px 0 0 0;
+  border: none;
+  border-radius: 45px;
+}
+.error{
+  color: white;
+  font-size: 1rem;
+}
