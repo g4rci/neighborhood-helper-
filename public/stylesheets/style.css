@@ -8,8 +8,7 @@ body {
 }
 .navBar{
   background-color: teal;
-  height: 70px;
-  vertical-align: center;
+  height: 60px;
 }
 .indexImg{
   position: relative;
@@ -22,6 +21,26 @@ body {
   text-decoration: none;
   color: white;
 }
+.indexImg h1{
+  position: absolute;
+	top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-decoration: none;
+  color: white;
+}
 .indexImg img{
   width: 100%;
 }
+.landingCard{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+}
+.card{
+  border: 3px solid aqua;
+  width: 400px;
+  height: 500px;
+}
+
