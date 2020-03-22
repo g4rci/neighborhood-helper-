@@ -43,7 +43,13 @@ mongoose
       ttl:  24 * 60 * 60 // 1 day
     })
   }));
+  app.use(function(req, res, next) {
+    app.locals.currentUser = req.session.currentUser;
+    res.locals.currentUser = req.session.currentUser;
+    next();
+  }); 
   
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -59,6 +65,7 @@ app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
 app.use('/', privRouter);
+
 
 
 

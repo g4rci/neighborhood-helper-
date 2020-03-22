@@ -5,6 +5,9 @@ var bcryptSalt = 10;
 
 const User = require("../models/user");
 
+
+
+
 router.get('/signup', (req,res,next)=>{
     res.render ('auth/signup');
 })
@@ -41,6 +44,7 @@ router.post('/signup', (req,res,next)=>{
 
 router.get("/login", (req, res, next)=>{
     // renderizar las vistas de login
+    
     res.render("auth/login")
 })
 router.post("/login", (req, res, next)=>{
