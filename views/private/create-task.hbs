@@ -1,0 +1,12 @@
+<h1>Create a new To-do:</h1>
+
+<form action="/create-task" method="post">
+    <input type="text" name="name" placeholder="Title">
+    <textarea name="description" placeholder="Task"></textarea>
+    <button type="submit"> Create! </button>
+</form>
+
+{{#if message}}
+    <p>{{message}}</p>
+    <a href="/private/">go back</a>
+{{/if}}

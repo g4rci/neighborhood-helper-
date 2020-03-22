@@ -69,23 +69,23 @@ router.post("/login", (req, res, next)=>{
         .catch(err => console.log("error finding the user: " + err))
 });
 
-router.get('/logout', (req, res, next) => {
-    delete req.session.currentUser
-    res.redirect('/')
-})
-
 // router.get('/logout', (req, res, next) => {
-//     if (!req.session.currentUser) {
-//       res.redirect('/');
-//       return;
-//     }
-//     req.session.destroy((err) => {
-//       if (err) {
-//         next(err);
-//         return;
-//       }
-//       res.redirect('/');
-//     });
-//   });
+//     delete req.session.currentUser
+//     res.render('index')
+// })
+
+router.get('/logout', (req, res, next) => {
+    if (!req.session.currentUser) {
+      res.redirect('/');
+      return;
+    }
+    req.session.destroy((err) => {
+      if (err) {
+        next(err);
+        return;
+      }
+      res.redirect('/');
+    });
+  });
 
 module.exports = router;

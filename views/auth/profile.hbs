@@ -1,0 +1,26 @@
+<h1> Hi {{username}}, here is your TO-DO list:</h1>
+
+{{#each todoList}}
+    <div class="todo-card">
+        <h2>{{name}}</h2>
+        <p>{{message}}</p>
+        <p> completed: {{done}}</p>
+
+        {{#unless done }}
+            <a class="button" href="/priv/completed-todo/{{_id}}">completed</a>
+        {{/unless}}
+
+        <a class="button" href="/priv/delete-todo/{{_id}}">delete</a>
+    </div>
+    
+{{/each}}
+
+{{#unless todoList}}
+    <p>You have nothing to do</p>
+{{/unless}}
+<br>
+<a href="/auth/create-todo">create a todo</a>
+
+<form action="/priv/logout" method="post">
+<button>log-out</button>
+</form>

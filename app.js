@@ -14,12 +14,14 @@ const bcrypt = require('bcrypt');
 const indexRouter = require('./routes/index');
 const authRouter = require ('./routes/auth')
 const usersRouter = require('./routes/users');
+const privRouter = require('./routes/priv');
 
 const app = express();
 
 mongoose
   .connect('mongodb://localhost/neighborhoodhelper', {
     useNewUrlParser: true,
+    useCreateIndex: true,
     useUnifiedTopology: true
   })
   .then(x => {
@@ -32,13 +34,13 @@ mongoose
   });
 
   app.use(session({
-    secret: 'never do your own laundry again',
+    secret: 'hello',
     resave: true,
     saveUninitialized: true,
     cookie: { maxAge: 60000 },
     store: new MongoStore({
       mongooseConnection: mongoose.connection,
-      ttl: 24 * 60 * 60 // 1 day
+      ttl:  24 * 60 * 60 // 1 day
     })
   }));
   
@@ -56,6 +58,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
+app.use('/', privRouter);
 
 
 
@@ -75,5 +78,13 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// app.configure(()=>{
+//   app.use((req,res,next) =>{
+//     res.locals.user = req.session.user;
+//     next(); 
+//   })
+// })
+
 
 module.exports = app;

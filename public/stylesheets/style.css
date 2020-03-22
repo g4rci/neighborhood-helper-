@@ -32,6 +32,7 @@ body {
 
 .indexImg {
   position: relative;
+  
 }
 
 .indexImg h3 {
@@ -69,6 +70,7 @@ body {
   width: 400px;
   height: 500px;
   margin-top: 20px;
+  margin-bottom: 20px;
   padding: 10px;
 }
 
@@ -87,10 +89,14 @@ body {
   transform: translate(-50%, -50%);
   height: 50%;
 }
-.signup label, input{
+.signup label{
   font-size: 25px;
   margin: 5px 0;
   color: white;
+}
+.signup input{
+  font-size: 25px;
+  margin: 5px 0;
 }
 .signup button{
   height: 30px;
