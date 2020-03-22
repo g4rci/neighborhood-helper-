@@ -16,6 +16,7 @@ router.use((req, res, next)=> userIsLoggedIn(req, res, next));
 //     }
 // })
 //********************************* */
+
 router.get("/create-task", (req, res, next) =>{
     //el get solo tiene que renderizar la vista
     console.log('hola')
@@ -23,19 +24,22 @@ router.get("/create-task", (req, res, next) =>{
 })
 
 router.post("/create-task", async (req, res, next)=>{
-    
-    console.log ('createtask');
-
     const {name, description} = req.body
-
+    
     const newTask = await Task.create({name, description})
     console.log('new task is :', newTask);
+    
     const userId = req.session.currentUser._id
-
+    
     await User.updateOne({_id: userId}, { $push: {tasks: newTask._id} })
     
     res.render("private/create-task", {message:"created successfully"})
-
+    
 })
 
+
+router.get('/profile', (req, res ,nex) => {
+    console.log('estamos en profile')
+    res.render('private/profile')
+})
 module.exports = router;
