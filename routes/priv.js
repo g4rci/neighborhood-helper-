@@ -57,19 +57,18 @@ router.get('/:id/task-details', (req, res, next) => {
     
 })
 
-// router.post('/:id/users', (req, res, nex) => {
-//     const userId = req.session.currentUser._id
-//     const taskId = req.params._id
-//     console.log('usuario', taskId);
-//     User
-//         .findById(userId)
-//         .updateOne()
-//         .then(() => {
-//              //console.log(user);
-            
-//             res.render('private/profile')
-//         })
-// });
+router.post('/:id/task-details', (req, res, nex) => {
+    const userId = req.session.currentUser._id
+    const taskId = req.params.id
+    User
+        .find(userId)
+        .updateOne({requests: taskId})
+        .then(() => {
+             console.log('user id' ,userId);
+             console.log('task id' ,taskId);
+            res.render('private/profile')
+        })
+});
 
 
 
