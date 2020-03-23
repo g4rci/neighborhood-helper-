@@ -1,26 +1,22 @@
-<h1> Hi {{currentUser.name}}, here is your TO-DO list:</h1>
+<h1> Hi {{user.name}}, here is your TO-DO list:</h1>
 
 
 <div class="todo-card">
-    <h2>{{currentUser.name}}</h2>
-    <p>{{currentUser.email}}</p>
-
-
-    <p> completed: {{done}}</p>
-
-    {{#unless done }}
-    <a class="button" href="/priv/completed-todo/{{_id}}">completed</a>
-    {{/unless}}
-
+    <h2>{{user.name}}</h2>
+    <p>{{user.email}}</p>
+    {{#each user.tasks}}
+    <h1>Name: {{this.name}}</h1>
+    <h2>Description: {{this.description}}</h2>
+    {{/each}}
+    <p>Tarea que realizar: </p>
+    
     <a class="button" href="/priv/delete-todo/{{_id}}">delete</a>
 </div>
-{{#each newTask}}
-   {{newTask}}
-{{/each}}
 
 
-{{#unless newTask}}
+
+
 <p>You have nothing to do</p>
-{{/unless}}
+
 <br>
 <a href="/create-todo">create a todo</a>
