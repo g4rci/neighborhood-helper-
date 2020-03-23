@@ -4,6 +4,7 @@
     <img src="{{user.picture}}" width="150px"alt="">
 
     <div class="flex-wrap">
+        <h1>My task to do for someone</h1>
         {{#each user.tasks}}
         <div class="tasks">
             <h1>Name: {{this.name}}</h1>
@@ -12,6 +13,22 @@
                 <button type="submit">Delete!</button>
             </form>
             <a href="/{{this.id}}/edit">Edit</a>
+        </div>
+        {{else}}
+        <p>You have nothing to do</p>
+        {{/each}}
+    </div>
+
+    <div class="flex-wrap">
+        <h1>Tasks I'll do</h1>
+        {{#each user.requests}}
+        <div class="tasks">
+            <h1>Name: {{this.name}}</h1>
+            <h2>Description: {{this.description}}</h2>
+            <form class="button" action="/{{this.id}}/profile" method="POST">
+                <button type="submit">Complete!</button>
+            </form>
+           
         </div>
         {{else}}
         <p>You have nothing to do</p>

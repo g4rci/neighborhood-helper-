@@ -31,6 +31,7 @@ router.get('/profile', (req, res, nex) => {
     User
         .findById(userId)
         .populate("tasks")
+        .populate("requests")
         .then(user => {
              //console.log(user);
             
@@ -49,6 +50,7 @@ router.get('/users' , (req, res, next) => {
 
 router.get('/:id/task-details', (req, res, next) => {
     const taskId = req.params.id
+    console.log(taskId)
     Task
     .findById(taskId)
     .then(task => {
@@ -56,20 +58,20 @@ router.get('/:id/task-details', (req, res, next) => {
     })
     
 })
-
-// router.post('/:id/users', (req, res, nex) => {
-//     const userId = req.session.currentUser._id
-//     const taskId = req.params._id
-//     console.log('usuario', taskId);
-//     User
-//         .findById(userId)
-//         .updateOne()
-//         .then(() => {
-//              //console.log(user);
-            
-//             res.render('private/profile')
-//         })
-// });
+//cojemos la task de otro usuario y nos la adjudicamos a nuestra key requests
+router.post('/:id/users', (req, res, nex) => {
+    const userId = req.session.currentUser._id
+    const taskId = req.params.id
+    console.log(userId);
+    
+    console.log('tarea', taskId);
+    User
+        .findById(userId)
+        .updateOne({requests: taskId})
+        .then(() => {
+            res.redirect('/profile')
+        })
+});
 
 
 
