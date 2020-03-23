@@ -64,7 +64,18 @@ body {
   justify-content: space-around;
   flex-wrap: wrap;
 }
+.flex-wrap{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.tasks{
+  border: 2px solid;
+  width: 20%;
+  margin: 20px;
 
+
+}
 .card {
   border: 5px solid #263139;
   width: 400px;

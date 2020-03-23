@@ -13,7 +13,6 @@ const bcrypt = require('bcrypt');
 
 const indexRouter = require('./routes/index');
 const authRouter = require ('./routes/auth')
-const usersRouter = require('./routes/users');
 const privRouter = require('./routes/priv');
 
 const app = express();
@@ -44,7 +43,7 @@ mongoose
     })
   }));
 
-  
+
   app.use(function(req, res, next) {
     app.locals.currentUser = req.session.currentUser;
     res.locals.currentUser = req.session.currentUser;
@@ -65,7 +64,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
-app.use('/users', usersRouter);
+
 app.use('/', privRouter);
 
 

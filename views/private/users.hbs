@@ -1,5 +1,26 @@
-<div class="allBeers">
-    {{#each allBeers}}
-    {{> beerCard this}}
-    {{/each}}
+
+<div>
+    <div>
+        {{#each allUsers}}
+        <div class="tasks">
+            <h1>Name: {{this.name}}</h1>
+            <h2>Direction: {{this.direction}}</h2>
+            <div style="width: 100%"><iframe width="100%" height="300" src="https://maps.google.com/maps?width=100%&height=400&hl=es&q={{this.direction}}+(Mi%20nombre%20de%20egocios)&ie=UTF8&t=&z=17&iwloc=B&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a href="https://www.mapsdirections.info/calcular-ruta.html"></a></iframe></div>
+            
+                <ul>
+                    {{#each this.tasks}}
+                   <li><a href="/{{id}}/task-details">{{this.name}}</a></li>
+                    {{/each}}
+                </ul>
+                
+        </div>
+        {{else}}
+        <p>You have nothing to do</p>
+        {{/each}}
+    </div>
+
 </div>
+
+
+<br>
+<a href="/create-task">Create new task</a>

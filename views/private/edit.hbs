@@ -1,0 +1,12 @@
+<h1>Edit Taks</h1>
+
+<form action="/{{_id}}/edit" method="post">
+    <input type="text" name="name" placeholder="Name" value="{{name}}">
+    <textarea name="description" placeholder="Task">{{description}}</textarea>
+    <button type="submit"> Edit! </button>
+</form>
+
+{{#if message}}
+    <p>{{message}}</p>
+    <a href="/">go back</a>
+{{/if}}
