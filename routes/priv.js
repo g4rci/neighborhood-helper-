@@ -39,7 +39,6 @@ router.post("/create-task", async (req, res, next)=>{
 
 
 router.get('/profile', (req, res ,nex) => {
-    console.log('estamos en profile')
     res.render('private/profile')
 })
 module.exports = router;

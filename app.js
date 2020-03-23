@@ -43,6 +43,8 @@ mongoose
       ttl:  24 * 60 * 60 // 1 day
     })
   }));
+
+  
   app.use(function(req, res, next) {
     app.locals.currentUser = req.session.currentUser;
     res.locals.currentUser = req.session.currentUser;

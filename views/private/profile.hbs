@@ -7,6 +7,9 @@
 
 
     <p> completed: {{done}}</p>
+    {{#each tasks}}
+    {{tasks.name}}
+    {{/each}}
 
     {{#unless done }}
     <a class="button" href="/priv/completed-todo/{{_id}}">completed</a>
@@ -14,12 +17,10 @@
 
     <a class="button" href="/priv/delete-todo/{{_id}}">delete</a>
 </div>
-{{#each newTask}}
-   {{newTask}}
-{{/each}}
 
 
-{{#unless newTask}}
+
+{{#unless tasks}}
 <p>You have nothing to do</p>
 {{/unless}}
 <br>
