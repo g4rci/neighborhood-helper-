@@ -4,13 +4,20 @@
 <div class="todo-card">
     <h2>{{user.name}}</h2>
     <p>{{user.email}}</p>
-    {{#each user.tasks}}
-    <h1>Name: {{this.name}}</h1>
-    <h2>Description: {{this.description}}</h2>
-    {{/each}}
-    <p>Tarea que realizar: </p>
-    
-    <a class="button" href="/priv/delete-todo/{{_id}}">delete</a>
+
+    <div class="flex-wrap">
+        {{#each user.tasks}}
+        <div class="tasks">
+
+            <h1>Name: {{this.name}}</h1>
+            <h2>Description: {{this.description}}</h2>
+            <form class="button" action="/{{this.id}}/profile" method="POST">
+            <button type="submit">Delete!</button>
+            </form>
+        </div>
+        {{/each}}
+    </div>
+
 </div>
 
 

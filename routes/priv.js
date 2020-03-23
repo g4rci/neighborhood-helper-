@@ -45,7 +45,7 @@ router.get('/profile', (req, res, nex) => {
         .findById(userId)
         .populate("tasks")
         .then(user => {
-             console.log(user);
+             //console.log(user);
             res.render('private/profile', {user})
         }
         )
@@ -53,4 +53,14 @@ router.get('/profile', (req, res, nex) => {
 // router.get('/users', (req, res, nex) => {
 
 // });
+
+// hacemos delete de las tareas
+router.post('/:id/profile', (req,res,next) => {
+    console.log();
+    Task
+    .findByIdAndRemove(req.params.id)
+    .then (()=>{res.redirect('/profile')})
+    .catch (err => next (err))
+});
+
 module.exports = router;
