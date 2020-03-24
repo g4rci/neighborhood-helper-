@@ -30,11 +30,12 @@ router.get('/profile', (req, res, nex) => {
     const userId = req.session.currentUser._id
     User
         .findById(userId)
-        .populate("tasks")
-        //.populate("requests")
-        .populate({path:'requests', populate:{path:'assigned'}})
+        //.populate("tasks")
+        
+        .populate({path:'tasks', populate:{path:'assigned'}})
+        .populate("requests")
         .then(user => {
-             //console.log(user);
+            // console.log(user.tasks[0].assigned);
             
             res.render('private/profile', {user})
         })
@@ -81,18 +82,28 @@ router.post('/:id/users', (req, res, next) => {
     
 
 // hacemos delete de las tareas
-router.post('/:id/profile', (req,res,next) => {;
+router.post('/:id/profile', (req,res,next) => {
+    
     Task
-    .findByIdAndRemove(req.params.id)
-    .then ((task)=>{
-        console.log('the following task has been removed: '+ task)
-    })
-    .catch (err => next (err))
+     .findById(req.params.id)
+     .populate({path:'tasks', populate:{path:'assigned'}})
+     .then ((tasks)=>{
+         console.log(tasks.assigned._id);
+         User
+         .findByIdAndUpdate({'_id': tasks.assigned._id}, {$pull: {requests:req.params.id}})
+     })
+    /* Task
+     .findByIdAndRemove(req.params.id)
+     .then ((task)=>{
+         console.log('the following task has been removed: '+ task)
+     })
+     .catch (err => next (err))*/
     User
     .findByIdAndUpdate({'_id': req.session.currentUser._id}, {$pull: {requests:req.params.id}})
     .then(()=>{
         res.redirect('/profile')
     })
+    
     
 });
 
