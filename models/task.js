@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const taskSchema = new Schema({
   name: {type: String, required: true},
+  assigned: {type: Schema.Types.ObjectId, ref:'User'},
   description: {type: String, required: true, unique: true},
   picture: String,
 });

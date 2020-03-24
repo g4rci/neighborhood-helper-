@@ -14,7 +14,7 @@ router.get("/create-task", (req, res, next) => {
 router.post("/create-task", async (req, res, next) => {
     const { name, description } = req.body
 
-    const newTask = await Task.create({ name, description })
+    const newTask = await Task.create({ name, description, assigned: null})
     console.log('new task is :', newTask);
 
     const userId = req.session.currentUser._id
@@ -31,6 +31,7 @@ router.get('/profile', (req, res, nex) => {
     User
         .findById(userId)
         .populate("tasks")
+        .populate("requests")
         .then(user => {
              //console.log(user);
             
@@ -49,6 +50,7 @@ router.get('/users' , (req, res, next) => {
 
 router.get('/:id/task-details', (req, res, next) => {
     const taskId = req.params.id
+    console.log(taskId)
     Task
     .findById(taskId)
     .then(task => {
@@ -56,19 +58,26 @@ router.get('/:id/task-details', (req, res, next) => {
     })
     
 })
-
-router.post('/:id/task-details', (req, res, nex) => {
+//cojemos la task de otro usuario y nos la adjudicamos a nuestra key requests
+router.post('/:id/users', (req, res, next) => {
     const userId = req.session.currentUser._id
     const taskId = req.params.id
+    console.log(userId)
     User
-        .find(userId)
+        .findById(userId)
         .updateOne({requests: taskId})
-        .then(() => {
-             console.log('user id' ,userId);
-             console.log('task id' ,taskId);
-            res.render('private/profile')
+        .then((task) => {
+        Task
+        .findByIdAndUpdate(taskId,{'assigned': userId},{new: true})
+        .then((updatedTask)=>{
+            res.redirect('/profile')
         })
+        .catch (err => next(err))
+        })
+       
+    
 });
+    
 
 
 
@@ -76,9 +85,18 @@ router.post('/:id/task-details', (req, res, nex) => {
 router.post('/:id/profile', (req,res,next) => {;
     Task
     .findByIdAndRemove(req.params.id)
-    .then (()=>{res.redirect('/profile')})
+    .then ((task)=>{
+        console.log('the following task has been removed: '+ task)
+    })
     .catch (err => next (err))
+    User
+    .findByIdAndUpdate({'_id': req.session.currentUser._id}, {$pull: {requests:req.params.id}})
+    .then(()=>{
+        res.redirect('/profile')
+    })
+    
 });
+
 
 router.post('/:id/edit', async (req, res, next) => {
     const { name, description } = req.body;
