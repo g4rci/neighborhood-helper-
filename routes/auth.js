@@ -35,7 +35,7 @@ router.post('/signup', (req,res,next)=>{
         User.create({name, email, 'password':hashpass, direction})
         .then((user)=>{
             req.session.currentUser = user;
-            res.render('index')
+            res.redirect('/')
         })
         .catch (err => console.log ('Error creating user: ' +err));
     })

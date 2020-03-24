@@ -88,6 +88,9 @@ body {
   flex-direction: row;
   justify-content: space-evenly;
 }
+.flex-wrap button{
+  background-color: #6c8784;
+}
 
 .tasks {
   border: 2px solid;
@@ -110,20 +113,28 @@ background: linear-gradient(180deg, rgba(232,236,175,1) 0%, rgba(244,193,109,1) 
 }
 .tasks a{
   width: 30px;
-  border: 1px solid #98beba;
+  border: 1px solid #6c8784;
   border-radius: 25px;
   height: 30px;
   width: 80px;
   text-align: center;
   text-decoration: none;
   color: black;
-  background-color: #98beba;
+  background-color: #6c8784;
 }
 
 .tasks ul {
   list-style-type: none;
   text-align: center;
   text-decoration: none;
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.tasks li{
+  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .card {
@@ -178,6 +189,9 @@ background: linear-gradient(180deg, rgba(232,236,175,1) 0%, rgba(244,193,109,1) 
   margin: 20px 0 0 0;
   border: none;
   border-radius: 45px;
+  background-color: #6c8784;
+  font-family: 'Righteous', cursive;
+  font-size: 20px;
 }
 
 .error {
