@@ -4,6 +4,7 @@
 <head>
   <title>{{title}}</title>
   <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -11,13 +12,13 @@
     <div class="logo">
       <a href="/profile">
         <img
-          src="https://banner2.cleanpng.com/20180401/dbq/kisspng-user-profile-computer-icons-profile-5ac09245049c32.0935523415225697970189.jpg"
+          src="https://www.xyzapk.com/wp-content/uploads/2017/11/com.instaeditor.profileavatar.jpg.png"
           alt="logo">
       </a>
     </div>
     <div class="navBar">
       {{#if currentUser}}
-      <p>Hello {{currentUser.name}}</p>
+      <h1>Hello {{currentUser.name}}</h1>
       {{/if}}
       <a href="/">Home</a>
       <a href="/auth/signup">SingUp</a>
@@ -26,7 +27,9 @@
       <a href="/users">Help Someone</a>
     </div>
   </div>
+  <div class="gradiant">
   {{{body}}}
+  </div>
 </body>
 
 </html>

@@ -3,15 +3,23 @@
   padding: 0;
 }
 
+iframe {
+  height: 200px;
+}
+
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0px;
+  font-family: 'Righteous', cursive;
+  background-color: #98beba;
 }
 
 .logo img {
   height: 50px;
   position: absolute;
   background-color: #263139;
+  padding: 5px;
+  padding-left: 15px;
 }
 
 .navBar {
@@ -29,10 +37,15 @@ body {
   color: white;
   font-size: 20px;
 }
+.navBar h1 {
+  font-size: 17px;
+  color: burlywood;
+  padding-right: 100px;
+}
 
 .indexImg {
   position: relative;
-  
+
 }
 
 .indexImg h3 {
@@ -42,7 +55,7 @@ body {
   transform: translate(-50%, -50%);
   text-decoration: none;
   color: white;
-  font-size: 2.2rem;
+  font-size: 2.5rem;
 }
 
 .indexImg h1 {
@@ -52,7 +65,7 @@ body {
   transform: translate(-50%, -50%);
   text-decoration: none;
   color: white;
-  font-size: 2.5rem;
+  font-size: 2.9rem;
 }
 
 .indexImg img {
@@ -61,35 +74,80 @@ body {
 
 .landingCard {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
-.flex-wrap{
+
+.card iframe {
+  border-radius: 25px;
+}
+
+.flex-wrap {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  justify-content: space-evenly;
 }
-.tasks{
+
+.tasks {
   border: 2px solid;
-  width: 20%;
-  margin: 20px;
-
-
+  margin: 40px 20px;
+  width: 300px;
+  height: 400px;
+  padding: 13px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgb(232,236,175);
+background: linear-gradient(180deg, rgba(232,236,175,1) 0%, rgba(244,193,109,1) 47%, rgba(215,183,88,1) 100%);
 }
+.tasks button {
+  height: 30px;
+  width: 80px;
+  border-radius: 25px;
+  border: none;
+}
+.tasks a{
+  width: 30px;
+  border: 1px solid #98beba;
+  border-radius: 25px;
+  height: 30px;
+  width: 80px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  background-color: #98beba;
+}
+
+.tasks ul {
+  list-style-type: none;
+  text-align: center;
+  text-decoration: none;
+}
+
 .card {
   border: 5px solid #263139;
-  width: 400px;
-  height: 500px;
+  width: 300px;
+  height: 400px;
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 10px;
+  border-radius: 25px;
+  background: rgb(232,236,175);
+background: linear-gradient(180deg, rgba(232,236,175,1) 0%, rgba(244,193,109,1) 47%, rgba(215,183,88,1) 100%);
 }
 
-.signup img{ 
+.tasks iframe {
+  border-radius: 25px;
+}
+
+.signup img {
   position: relative;
   width: 100%;
 }
-.signup form{
+
+.signup form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -100,16 +158,19 @@ body {
   transform: translate(-50%, -50%);
   height: 50%;
 }
-.signup label{
+
+.signup label {
   font-size: 25px;
   margin: 5px 0;
   color: white;
 }
-.signup input{
+
+.signup input {
   font-size: 25px;
   margin: 5px 0;
 }
-.signup button{
+
+.signup button {
   height: 30px;
   width: 200px;
   color: white;
@@ -118,7 +179,35 @@ body {
   border: none;
   border-radius: 45px;
 }
-.error{
+
+.error {
   color: white;
   font-size: 1rem;
+}
+
+.usersCard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100;
+  background-size: contain;
+ }
+
+.todo-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
+  width: 400px;
+  height: 500px;
+  border-radius: 25px;
+  padding: 10px;
+  margin: 20px;
+  justify-content: space-evenly;
+  background: rgb(232,236,175);
+background: linear-gradient(180deg, rgba(232,236,175,1) 0%, rgba(244,193,109,1) 47%, rgba(215,183,88,1) 100%);
+}
+
+.todo-card iframe {
+  border-radius: 25px;
 }
