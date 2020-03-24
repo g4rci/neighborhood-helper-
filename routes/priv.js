@@ -31,7 +31,8 @@ router.get('/profile', (req, res, nex) => {
     User
         .findById(userId)
         .populate("tasks")
-        .populate("requests")
+        //.populate("requests")
+        .populate({path:'requests', populate:{path:'assigned'}})
         .then(user => {
              //console.log(user);
             
