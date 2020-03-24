@@ -9,6 +9,7 @@
         <div class="tasks">
             <h1>Name: {{this.name}}</h1>
             <h2>Description: {{this.description}}</h2>
+            <h2>tarea hecha por: {{this.assigned.name}}</h2>
             <form class="button" action="/{{this.id}}/profile" method="POST">
                 <button type="submit">Delete!</button>
             </form>
