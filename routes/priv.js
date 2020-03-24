@@ -80,8 +80,6 @@ router.post('/:id/users', (req, res, next) => {
 });
     
 
-
-
 // hacemos delete de las tareas
 router.post('/:id/profile', (req,res,next) => {;
     Task
