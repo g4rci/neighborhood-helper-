@@ -225,3 +225,10 @@ background: linear-gradient(180deg, rgba(232,236,175,1) 0%, rgba(244,193,109,1) 
 .todo-card iframe {
   border-radius: 25px;
 }
+.create-task{
+  display: flex;
+  justify-content: center;
+  
+  padding-top: 100px;
+
+}

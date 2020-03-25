@@ -1,8 +1,13 @@
+<div class="create-task">
+
+<div>
 <h1>Create a new To-do:</h1>
 
 <form action="/create-task" method="post">
-    <input type="text" name="name" placeholder="Title">
-    <textarea name="description" placeholder="Task"></textarea>
+    <label>Task name:</label><br>
+    <input type="text" name="name" placeholder="Title"><br>
+    <label for="">Task desription:</label><br>
+    <textarea name="description" placeholder="Task"></textarea><br>
     <button type="submit"> Create! </button>
 </form>
 
@@ -10,3 +15,7 @@
     <p>{{message}}</p>
     <a href="/">go back</a>
 {{/if}}
+
+</div>
+
+</div>

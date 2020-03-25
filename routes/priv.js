@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 const userIsLoggedIn = require("../middlewares/auth-mid").userIsLoggedIn
 const Task = require('../models/task');
-const User = require('../models/user')
+const User = require('../models/user');
+const uploadCloud = require('../config/cloudinary')
 
 router.use((req, res, next) => userIsLoggedIn(req, res, next));
 
@@ -62,9 +63,10 @@ router.get('/:id/task-details', (req, res, next) => {
 })
 
 //Edit profile
-router.post('/:id/edit-profile', async (req, res, next) => {
-    const { name, email, direction, picture } = req.body;
-    await User.update({_id: req.params.id}, {name, email, direction, picture})
+router.post('/:id/edit-profile',uploadCloud.single('picture'), async (req, res, next) => {
+    const { name, email, direction} = req.body;
+    const profilePicture = req.file ? req.file.secure_url : req.session.currentUser.picture;
+    await User.update({_id: req.params.id}, {name, email, direction, profilePicture},{new:true})
     res.redirect('/profile');
 });
 
