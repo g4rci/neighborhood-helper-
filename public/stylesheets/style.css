@@ -73,6 +73,9 @@ body {
 .indexImg img {
   width: 100%;
 }
+.indexImg h1:hover{
+  font-size: 4rem;
+}
 
 .landingCard {
   display: flex;

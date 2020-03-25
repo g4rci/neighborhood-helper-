@@ -1,12 +1,17 @@
-<h1>Edit Taks</h1>
+<div class="profile-card">
 
-<form action="/{{_id}}/edit" method="post">
-    <input type="text" name="name" placeholder="Name" value="{{name}}">
-    <textarea name="description" placeholder="Task">{{description}}</textarea>
-    <button type="submit"> Edit! </button>
+
+<div class="tasks">
+<h1>Edit Taks</h1>
+<form action="/{{_id}}/edit" method="post"><br>
+    <input type="text" name="name" placeholder="Name" value="{{name}}"><br><br>
+    <textarea name="description" placeholder="Task">{{description}}</textarea><br>
+    <button type="submit"> Edit! </button><br>
 </form>
 
 {{#if message}}
     <p>{{message}}</p>
     <a href="/profile">go back</a>
 {{/if}}
+</div>
+</div>
