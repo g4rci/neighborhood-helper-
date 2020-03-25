@@ -117,17 +117,7 @@ router.post('/:id/users', (req, res, next) => {
 
 // hacemos delete de las tareas
 router.post('/:id/profile', (req,res,next) => {
-    
-    // Task
-    //  .findById(req.params.id)
-    //  .populate({path:'tasks', populate:{path:'assigned'}})
-    //  .then ((tasks)=>{
-    //      console.log(tasks.assigned._id);
-    //      User
-    //      .findByIdAndUpdate({'_id': tasks.assigned._id}, {$pull: {requests:req.params.id}})
-    //  })
     Task
-<<<<<<< HEAD
      .findById(req.params.id)
      .populate({path:'tasks', populate:{path:'assigned'}})
      .then ((tasks)=>{
@@ -136,29 +126,18 @@ router.post('/:id/profile', (req,res,next) => {
          .findByIdAndUpdate({'_id': tasks.assigned._id}, {$pull: {requests:req.params.id}})
      })
     Task
-=======
->>>>>>> miguelangel
      .findByIdAndRemove(req.params.id)
      .then ((task)=>{
          //console.log('the following task has been removed: '+ task)
          res.redirect('/profile')
      })
      .catch (err => next (err))
-<<<<<<< HEAD
+
     User
     .findByIdAndUpdate({'_id': req.session.currentUser._id}, {$pull: {requests:req.params.id}})
     .then(()=>{
         res.redirect('/profile')
     })
-=======
-    // User
-    // .findByIdAndUpdate({'_id': req.session.currentUser._id}, {$pull: {requests:req.params.id}})
-    // .then(()=>{
-    //     
-    // })
->>>>>>> miguelangel
-    
-    
 });
 
 
