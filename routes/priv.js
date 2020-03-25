@@ -60,6 +60,21 @@ router.get('/:id/task-details', (req, res, next) => {
     })
     
 })
+
+//Edit profile
+router.post('/:id/edit-profile', async (req, res, next) => {
+    const { name, email, direction, picture } = req.body;
+    await User.update({_id: req.params.id}, {name, email, direction, picture})
+    res.redirect('/profile');
+});
+
+router.get('/:id/edit-profile' , async (req, res, next) => {
+    const editProfile = await User.findById(req.params.id)
+    res.render('private/edit-profile', editProfile)
+});
+
+
+
 //cojemos la task de otro usuario y nos la adjudicamos a nuestra key requests
 router.post('/:id/users', (req, res, next) => {
     const userId = req.session.currentUser._id
@@ -110,7 +125,7 @@ router.post('/:id/profile', (req,res,next) => {
 
 router.post('/:id/edit', async (req, res, next) => {
     const { name, description } = req.body;
-    console.log(req.body.id)
+    console.log('req.bodu de tasks: ', req.body)
     await Task.update({_id: req.params.id}, {name, description})
     res.redirect('/profile');
 });
