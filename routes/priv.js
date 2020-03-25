@@ -70,6 +70,22 @@ router.post('/:id/edit-profile',uploadCloud.single('picture'), async (req, res, 
     res.redirect('/profile');
 });
 
+//  router.post('/:id/edit-profile',uploadCloud.single('picture'), async (req, res, next) => {
+//     User.findOne({_id: req.session.currentUser._id})
+//     .then((user) => {
+//       actuallyUser = user;
+//       const {name, email, direction} = req.body;
+//       const photo_user = req.file ? req.file.secure_url : currentUser.picture;
+//       User.findOneAndUpdate({_id: req.query.user_id},{$set: {name, email, direction, picture: photo_user}},{new:true})
+//         .then(() =>
+//         res.redirect('/profile'))
+//         .catch((err) => next(err));
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     })
+//   });
+
 router.get('/:id/edit-profile' , async (req, res, next) => {
     const editProfile = await User.findById(req.params.id)
     res.render('private/edit-profile', editProfile)
@@ -109,12 +125,12 @@ router.post('/:id/profile', (req,res,next) => {
          User
          .findByIdAndUpdate({'_id': tasks.assigned._id}, {$pull: {requests:req.params.id}})
      })
-    /* Task
+    Task
      .findByIdAndRemove(req.params.id)
      .then ((task)=>{
          console.log('the following task has been removed: '+ task)
      })
-     .catch (err => next (err))*/
+     .catch (err => next (err))
     User
     .findByIdAndUpdate({'_id': req.session.currentUser._id}, {$pull: {requests:req.params.id}})
     .then(()=>{
