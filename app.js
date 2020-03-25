@@ -9,6 +9,8 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const bcrypt = require('bcrypt');
+const multer = require ('multer');
+
 
 
 const indexRouter = require('./routes/index');
