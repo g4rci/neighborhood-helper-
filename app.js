@@ -19,7 +19,7 @@ const privRouter = require('./routes/priv');
 
 const app = express();
 
-mongoose.connect(process.env.MONGODB_URI,  { useNewUrlParser: true }, {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
