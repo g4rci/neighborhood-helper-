@@ -2,7 +2,9 @@
   margin: 0;
   padding: 0;
 }
-
+button{
+  font-family: 'Righteous', cursive;
+}
 iframe {
   height: 200px;
 }
@@ -101,15 +103,26 @@ body {
   border-radius: 25px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   background: rgb(232,236,175);
-background: linear-gradient(180deg, rgba(232,236,175,1) 0%, rgba(244,193,109,1) 47%, rgba(215,183,88,1) 100%);
+  background: linear-gradient(180deg, rgba(232,236,175,1) 0%, rgba(244,193,109,1) 47%, rgba(215,183,88,1) 100%);
+}
+.tasks textarea{
+  height: 180px;
+  border-radius: 20px;
+  text-align: center;
+}
+.tasks input{
+  border-radius: 20px;
+  text-align: center;
+  height: 25px;
 }
 .tasks button {
   height: 30px;
   width: 80px;
   border-radius: 25px;
   border: none;
+  margin-top: 30px;
 }
 .tasks a{
   width: 30px;
@@ -212,7 +225,7 @@ background: linear-gradient(180deg, rgba(232,236,175,1) 0%, rgba(244,193,109,1) 
   display: flex;
   flex-direction: column;
   border: 1px solid;
-  width: 400px;
+  width: 650px;
   height: 500px;
   border-radius: 25px;
   padding: 10px;
@@ -224,6 +237,7 @@ background: linear-gradient(180deg, rgba(232,236,175,1) 0%, rgba(244,193,109,1) 
 
 .todo-card iframe {
   border-radius: 25px;
+  width: 78%;
 }
 .create-task{
   display: flex;
@@ -231,4 +245,13 @@ background: linear-gradient(180deg, rgba(232,236,175,1) 0%, rgba(244,193,109,1) 
   
   padding-top: 100px;
 
+}
+.profile-card{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.todo-card img{
+
+  margin-left: 248px;
 }
