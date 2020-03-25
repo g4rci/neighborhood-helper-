@@ -66,7 +66,7 @@ router.get('/:id/task-details', (req, res, next) => {
 router.post('/:id/edit-profile',uploadCloud.single('picture'), async (req, res, next) => {
     const { name, email, direction} = req.body;
     const profilePicture = req.file ? req.file.secure_url : req.session.currentUser.picture;
-    await User.update({_id: req.params.id}, {name, email, direction, profilePicture},{new:true})
+    await User.update({_id: req.params.id}, {name, email, direction, picture: profilePicture},{new:true})
     res.redirect('/profile');
 });
 
