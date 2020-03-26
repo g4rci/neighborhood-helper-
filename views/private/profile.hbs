@@ -13,15 +13,15 @@
 
 <div>
     <div class="flex-wrap">
-        <h1>My task to do for someone</h1>
+        <h1>My tasks</h1>
     </div>
     
     <div class="flex-wrap">
         {{#each user.tasks}}
         <div class="tasks">
-            <h1>Name: {{this.name}}</h1>
-            <h2>Description: {{this.description}}</h2>
-            <h2>tarea hecha por: {{this.assigned.name}}</h2>
+            <h1>{{this.name}}</h1>
+            <h2> {{this.description}}</h2>
+            <h2>Accepted By: {{this.assigned.name}}</h2>
             <form class="button" action="/{{this.id}}/profile" method="POST">
                 <button type="submit">Delete!</button>
             </form>
@@ -32,13 +32,13 @@
         {{/each}}
     </div>
     <div class="flex-wrap">
-    <h1>Tasks I'll do</h1>
+    <h1>Requests</h1>
     </div>
     <div class="flex-wrap">
         {{#each user.requests}}
         <div class="tasks">
-            <h1>Name: {{this.name}}</h1>
-            <h2>Description: {{this.description}}</h2>
+            <h1>{{this.name}}</h1>
+            <h2> {{this.description}}</h2>
             <form class="button" action="/{{this.id}}/profile" method="POST">
                 <button type="submit">Complete!</button>
             </form>
