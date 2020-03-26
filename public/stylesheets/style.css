@@ -4,6 +4,7 @@
 }
 button{
   font-family: 'Righteous', cursive;
+  font-size: 14px;
 }
 iframe {
   height: 200px;
@@ -13,19 +14,26 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0px;
   font-family: 'Righteous', cursive;
-  background-color: #98beba;
+  background-color:#50607D;
 }
 
 .logo img {
   height: 50px;
   position: absolute;
-  background-color: #263139;
+  background-color: #39485F;
   padding: 5px;
   padding-left: 15px;
 }
+.profilePic img{
+  background-color: #C7C7C7;
+  position: relative;
+  display: inline;
+  border-radius: 15px;
+  height: 70px;
+}
 
 .navBar {
-  background-color: #263139;
+  background-color: #39485F;
   height: 60px;
   display: flex;
   flex-direction: row;
@@ -94,24 +102,42 @@ body {
   justify-content: space-evenly;
 }
 .flex-wrap button{
-  background-color: #6c8784;
+  background-color: #16D4A5;
 }
 
 .tasks {
   border: 2px solid;
   margin: 40px 20px;
   width: 300px;
-  height: 400px;
+  height: 500px;
   padding: 13px;
   border-radius: 25px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background: rgb(232,236,175);
-  background: linear-gradient(180deg, rgba(232,236,175,1) 0%, rgba(244,193,109,1) 47%, rgba(215,183,88,1) 100%);
+  background: #C7C7C7;
+  background: #C7C7C7;
+  -webkit-box-shadow: 22px 13px 24px -1px rgba(0,0,0,0.47);
+-moz-box-shadow: 22px 13px 24px -1px rgba(0,0,0,0.47);
+box-shadow: 22px 13px 24px -1px rgba(0,0,0,0.47);
+}
+.tasks span{
+  width: 30px;
+  border: 1px solid #16D4A5;
+  border-radius: 25px;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  background-color: #16D4A5;
+  font-size: 10px;
+  display: block;
+  padding: 5px 0;
+  margin: 5px 0;
 }
 .tasks textarea{
   height: 180px;
+  width: 80%;
   border-radius: 20px;
   text-align: center;
 }
@@ -119,38 +145,43 @@ body {
   border-radius: 20px;
   text-align: center;
   height: 25px;
+  width: 80%;
 }
 .tasks button {
   height: 30px;
-  width: 80px;
+  width: 100%;
   border-radius: 25px;
   border: none;
   margin-top: 30px;
+  background-color: #16D4A5;
 }
 .tasks a{
-  width: 30px;
-  border: 1px solid #6c8784;
+ border: 1px solid #16D4A5;
   border-radius: 25px;
-  height: 30px;
-  width: 80px;
+  width: 100%;
   text-align: center;
   text-decoration: none;
   color: black;
-  background-color: #6c8784;
+  background-color: #16D4A5;
+  display: block;
+  padding: 5px 0;
+  margin: 5px 0;
 }
 
 .tasks ul {
   list-style-type: none;
-  text-align: center;
-  text-decoration: none;
-  display: flex;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
+    flex-direction: column;
 }
 .tasks li{
-  margin-top: 5px;
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card {
@@ -161,8 +192,10 @@ body {
   margin-bottom: 20px;
   padding: 10px;
   border-radius: 25px;
-  background: rgb(232,236,175);
-background: linear-gradient(180deg, rgba(232,236,175,1) 0%, rgba(244,193,109,1) 47%, rgba(215,183,88,1) 100%);
+  background: #C7C7C7;
+  -webkit-box-shadow: 22px 13px 24px -1px rgba(0,0,0,0.47);
+-moz-box-shadow: 22px 13px 24px -1px rgba(0,0,0,0.47);
+box-shadow: 22px 13px 24px -1px rgba(0,0,0,0.47);
 }
 
 .tasks iframe {
@@ -201,11 +234,10 @@ background: linear-gradient(180deg, rgba(232,236,175,1) 0%, rgba(244,193,109,1) 
   height: 30px;
   width: 200px;
   color: white;
-  background-color: aqua;
+  background-color: #16D4A5;
   margin: 20px 0 0 0;
   border: none;
   border-radius: 45px;
-  background-color: #6c8784;
   font-family: 'Righteous', cursive;
   font-size: 20px;
 }
@@ -222,20 +254,37 @@ background: linear-gradient(180deg, rgba(232,236,175,1) 0%, rgba(244,193,109,1) 
   justify-content: space-evenly;
   width: 100;
   background-size: contain;
+  -webkit-box-shadow: 22px 13px 24px -1px rgba(0,0,0,0.47);
+-moz-box-shadow: 22px 13px 24px -1px rgba(0,0,0,0.47);
+box-shadow: 22px 13px 24px -1px rgba(0,0,0,0.47);
  }
+
 
 .todo-card {
   display: flex;
   flex-direction: column;
   border: 1px solid;
   width: 650px;
-  height: 500px;
+  height: 600px;
   border-radius: 25px;
   padding: 10px;
   margin: 20px;
   justify-content: space-evenly;
-  background: rgb(232,236,175);
-background: linear-gradient(180deg, rgba(232,236,175,1) 0%, rgba(244,193,109,1) 47%, rgba(215,183,88,1) 100%);
+  background: #C7C7C7;
+  -webkit-box-shadow: 22px 13px 24px -1px rgba(0,0,0,0.47);
+-moz-box-shadow: 22px 13px 24px -1px rgba(0,0,0,0.47);
+box-shadow: 22px 13px 24px -1px rgba(0,0,0,0.47);
+}
+.todo-card a{
+  border: 1px solid #16D4A5;
+  border-radius: 25px;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  background-color: #16D4A5;
+  display: block;
+  padding: 5px 0;
 }
 
 .todo-card iframe {
@@ -245,14 +294,15 @@ background: linear-gradient(180deg, rgba(232,236,175,1) 0%, rgba(244,193,109,1) 
 .create-task{
   display: flex;
   justify-content: center;
-  
   padding-top: 100px;
-
 }
 .profile-card{
   display: flex;
   justify-content: center;
   text-align: center;
+}
+.profile-card input, textarea{
+  margin: 10px 0;
 }
 .todo-card img{
 

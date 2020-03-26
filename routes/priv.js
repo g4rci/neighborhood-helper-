@@ -44,7 +44,7 @@ router.get('/profile', (req, res, nex) => {
 
 
 router.get('/users' , (req, res, next) => {
-    User.find()
+    User.find({_id:{$ne: req.session.currentUser._id} } )
         .populate("tasks")
         .then(allUsers => {
         res.render('private/users', {allUsers})

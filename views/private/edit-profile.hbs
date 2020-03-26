@@ -11,8 +11,10 @@
     <input type="text" name="email" value="{{email}}"><br>
     <label for="direction">Direction:</label><br>
     <input type="text" name="direction" value="{{direction}}"><br>
-    <label for="picture">Picture:</label><br>
-    <input type="file" name="picture" value="{{picture}}"><br>
+    <label for="picture">Picture:<br>
+    <span>Select File</span>
+    </label>
+    <input id="picture" type="file" name="picture" style="visibility: hidden;" value="{{picture}}"><br>
 
 <button type="submit"> Edit! </button>
 </form>
