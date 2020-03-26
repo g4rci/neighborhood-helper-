@@ -14,9 +14,9 @@ router.get("/create-task", (req, res, next) => {
 
 router.post("/create-task", async (req, res, next) => {
     const { name, description } = req.body
-
-    const newTask = await Task.create({ name, description, assigned: null})
-    console.log('new task is :', newTask);
+    const creator = req.session.currentUser._id
+    const newTask = await Task.create({ name, creator, description, assigned: null})
+    
 
     const userId = req.session.currentUser._id
 
@@ -53,7 +53,7 @@ router.get('/users' , (req, res, next) => {
 
 router.get('/:id/task-details', (req, res, next) => {
     const taskId = req.params.id
-    console.log(taskId)
+
     Task
     .findById(taskId)
     .then(task => {
@@ -66,7 +66,7 @@ router.get('/:id/task-details', (req, res, next) => {
 router.post('/:id/edit-profile',uploadCloud.single('picture'), async (req, res, next) => {
     const { name, email, direction} = req.body;
     const profilePicture = req.file ? req.file.secure_url : req.session.currentUser.picture;
-    console.log(req.file);
+    //console.log(req.file);
     await User.update({_id: req.params.id}, {name, email, direction, picture: profilePicture},{new:true})
     res.redirect('/profile');
 });
@@ -98,45 +98,51 @@ router.get('/:id/edit-profile' , async (req, res, next) => {
 router.post('/:id/users', (req, res, next) => {
     const userId = req.session.currentUser._id
     const taskId = req.params.id
-    console.log(userId)
-    User
+        User
         .findById(userId)
         .updateOne({requests: taskId})
         .then((task) => {
         Task
         .findByIdAndUpdate(taskId,{'assigned': userId},{new: true})
         .then((updatedTask)=>{
-            res.redirect('/profile')
+            const creatorId = updatedTask.creator
+            User.findByIdAndUpdate(creatorId, {$inc:{notifications:+1}},{new: true})
+            .then((user)=>{
+                console.log(user)
+                res.redirect('/profile')
+            })
         })
         .catch (err => next(err))
         })
-       
-    
+        
 });
     
 
 // hacemos delete de las tareas
 router.post('/:id/profile', (req,res,next) => {
+    console.log('en Profile')
     Task
      .findById(req.params.id)
-     .populate({path:'tasks', populate:{path:'assigned'}})
-     .then ((tasks)=>{
-         console.log(tasks.assigned._id);
-         User
-         .findByIdAndUpdate({'_id': tasks.assigned._id}, {$pull: {requests:req.params.id}})
-     })
-    Task
-     .findByIdAndRemove(req.params.id)
      .then ((task)=>{
-         //console.log('the following task has been removed: '+ task)
-         res.redirect('/profile')
+         const id = task.creator
+        console.log('task:', task);
+        User
+        .findByIdAndUpdate({'_id': id}, {$pull: {tasks: task._id}})
+        .then((task)=>{
+            console.log('borrado:',task)
+        })
      })
-     .catch (err => next (err))
-
-    User
-    .findByIdAndUpdate({'_id': req.session.currentUser._id}, {$pull: {requests:req.params.id}})
-    .then(()=>{
-        res.redirect('/profile')
+        User
+        .findByIdAndUpdate({'_id': req.session.currentUser._id}, {$pull: {requests:req.params.id}})
+        .then((request)=>{
+            console.log('borrado de request:',request)
+        })
+     Task
+        .findByIdAndRemove(req.params.id)
+        .then ((task)=>{
+            //console.log('the following task has been removed: '+ task)
+            res.redirect('/profile')
+        .catch (err => next (err))
     })
 });
 
