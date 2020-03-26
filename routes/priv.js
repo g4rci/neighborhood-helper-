@@ -152,7 +152,4 @@ router.get('/:id/edit' , async (req, res, next) => {
     const editTask = await Task.findById(req.params.id)
     res.render('private/edit', editTask)
 });
-
-
-
 module.exports = router;
