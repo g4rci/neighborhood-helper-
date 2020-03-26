@@ -19,7 +19,7 @@ const privRouter = require('./routes/priv');
 
 const app = express();
 
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect('mongodb://localhost/neighborhoodhelper',{
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true

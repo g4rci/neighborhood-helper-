@@ -121,14 +121,14 @@ router.post('/:id/profile', (req,res,next) => {
      .findById(req.params.id)
      .populate({path:'tasks', populate:{path:'assigned'}})
      .then ((tasks)=>{
-         console.log(tasks.assigned._id);
+         //console.log(tasks.assigned._id);
          User
-         .findByIdAndUpdate({'_id': tasks.assigned._id}, {$pull: {requests:req.params.id}})
+         .findByIdAndUpdate({'_id': tasks.assigned._id}, {$pull: {tasks:req.params.id}})
      })
     Task
      .findByIdAndRemove(req.params.id)
      .then ((task)=>{
-         //console.log('the following task has been removed: '+ task)
+         console.log('the following task has been removed: '+ task)
          res.redirect('/profile')
      })
      .catch (err => next (err))
