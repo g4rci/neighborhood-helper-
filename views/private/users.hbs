@@ -1,8 +1,10 @@
 
 <div>
-    
+  
     <div class="usersCard">
-        {{#each allUsers}}
+        {{#each allUsers }}
+          {{#unless currentUser}}
+        
         <div class="tasks">
             <h1>{{this.name}}</h1>
             <h2>{{this.direction}}</h2>
@@ -10,12 +12,16 @@
                 <ul>
                     {{#each this.tasks}}
                    <li><a href="/{{id}}/task-details">{{this.name}}</a></li>
+                    
                     {{/each}}
                 </ul>
+                
             </div>
         {{else}}
         <p>You have nothing to do</p>
+        {{/unless}}
         {{/each}}
+
     </div>
 
 </div>
