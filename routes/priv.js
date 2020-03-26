@@ -35,12 +35,23 @@ router.get('/profile', (req, res, nex) => {
         
         .populate({path:'tasks', populate:{path:'assigned'}})
         .populate("requests")
+        
         .then(user => {
             // console.log(user.tasks[0].assigned);
             
             res.render('private/profile', {user})
         })
 });
+
+router.post('/notifications', (req, res, next) =>{
+    const userId = req.session.currentUser._id
+    req.session.currentUser.notifications = 0
+    User
+    .findOneAndUpdate(userId,{$set: {notifications: 0}},{new:true})
+    .then(()=>{
+        res.redirect('/profile')
+    })
+})
 
 
 router.get('/users' , (req, res, next) => {
@@ -99,12 +110,13 @@ router.post('/:id/users', (req, res, next) => {
     const userId = req.session.currentUser._id
     const taskId = req.params.id
         User
-        .findById(userId)
-        .updateOne({requests: taskId})
-        .then((task) => {
+        .findByIdAndUpdate(userId, {$push:{'requests': taskId}},{new: true})
+        .then((user) => {
+            console.log('user with updated request', user)
         Task
         .findByIdAndUpdate(taskId,{'assigned': userId},{new: true})
         .then((updatedTask)=>{
+            console.log('task with updated assign', updatedTask)
             const creatorId = updatedTask.creator
             User.findByIdAndUpdate(creatorId, {$inc:{notifications:+1}},{new: true})
             .then((user)=>{

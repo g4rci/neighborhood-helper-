@@ -19,6 +19,9 @@
     <div class="navBar">
       
       {{#if currentUser}}
+      <form class="notifications" action="/notifications" method="POST">
+        <button type="submit">{{currentUser.notifications}}</button>
+      </form>
       <h1>Hello {{currentUser.name}}</h1>
       {{/if}}
       <a href="/">Home</a>
