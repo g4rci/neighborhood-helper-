@@ -13,7 +13,7 @@
 
 <div>
     <div class="flex-wrap">
-        <h1>My tasks</h1>
+        <h1>I need help with</h1>
     </div>
     
     <div class="flex-wrap">
@@ -21,22 +21,29 @@
         <div class="tasks">
             <h1>{{this.name}}</h1>
             <h2> {{this.description}}</h2>
+            {{#if this.assigned}}
             <h2>Accepted By: {{this.assigned.name}}</h2>
+            <img src="{{this.assigned.picture}}" alt="">
+
+            {{/if}}
             <form class="button" action="/{{this.id}}/profile" method="POST">
                 <button type="submit">Delete!</button>
             </form>
             <a href="/{{this.id}}/edit">Edit</a>
         </div>
         {{else}}
-        <p>You have nothing to do</p>
+        <p>I don't need help for now</p>
         {{/each}}
     </div>
     <div class="flex-wrap">
-    <h1>Requests</h1>
+    <h1>I'm gonna help</h1>
     </div>
     <div class="flex-wrap">
         {{#each user.requests}}
         <div class="tasks">
+            
+            <h1>{{this.creator.name}}</h1>
+            <img src="{{this.creator.picture}}" alt="">
             <h1>{{this.name}}</h1>
             <h2> {{this.description}}</h2>
             <form class="button" action="/{{this.id}}/profile" method="POST">
@@ -45,7 +52,7 @@
            
         </div>
         {{else}}
-        <p>You have nothing to do</p>
+        <p>I haven't accepted any task yet</p>
         {{/each}}
     </div>
 

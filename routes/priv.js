@@ -34,11 +34,9 @@ router.get('/profile', (req, res, nex) => {
         //.populate("tasks")
         
         .populate({path:'tasks', populate:{path:'assigned'}})
-        .populate("requests")
-        
+        .populate({path:'requests', populate:{path:'creator'}})
         .then(user => {
-            // console.log(user.tasks[0].assigned);
-            
+            //console.log(user.tasks[0].assigned)
             res.render('private/profile', {user})
         })
 });

@@ -192,6 +192,10 @@ box-shadow: 22px 13px 24px -1px rgba(0,0,0,0.47);
   flex-wrap: wrap;
   justify-content: center;
 }
+.tasks img{
+  width: 100px;
+  border-radius: 20px;
+}
 
 .card {
   border: 5px solid #263139;
@@ -205,6 +209,9 @@ box-shadow: 22px 13px 24px -1px rgba(0,0,0,0.47);
   -webkit-box-shadow: 22px 13px 24px -1px rgba(0,0,0,0.47);
 -moz-box-shadow: 22px 13px 24px -1px rgba(0,0,0,0.47);
 box-shadow: 22px 13px 24px -1px rgba(0,0,0,0.47);
+}
+.landingCard .card:hover{
+  transform: scale(1.1);
 }
 
 .tasks iframe {
@@ -323,4 +330,14 @@ box-shadow: 22px 13px 24px -1px rgba(0,0,0,0.47);
   width: 25px;
   color: white;
 }
+.explain{
+  color: white; 
+  text-align:center;
+  margin-top: 20px;
+}
+.explaina{
+  text-decoration:none;
+}
+.todo-card img{
+  border-radius: 20px;
 }
